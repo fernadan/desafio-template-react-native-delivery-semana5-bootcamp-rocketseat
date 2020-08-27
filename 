@@ -1,0 +1,298 @@
+warning: LF will be replaced by CRLF in server.json.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/__tests__/pages/Dashboard.spec.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/__tests__/pages/Favorites.spec.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/__tests__/pages/FoodDetails.spec.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/__tests__/pages/Orders.spec.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/components/SearchInput/index.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/components/SearchInput/styles.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/index.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/pages/Dashboard/index.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/pages/Dashboard/styles.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/pages/Favorites/index.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/pages/Favorites/styles.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/pages/FoodDetails/index.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/pages/FoodDetails/styles.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/pages/Home/index.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/pages/Home/styles.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/pages/Orders/index.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/pages/Orders/styles.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/routes/app.routes.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/routes/index.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/routes/tab.routes.tsx.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/services/api.ts.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in src/utils/formatValue.ts.
+The file will have its original line endings in your working directory
+[1mdiff --git a/server.json b/server.json[m
+[1mindex 04af9b2..1661e4f 100644[m
+[1m--- a/server.json[m
+[1m+++ b/server.json[m
+[36m@@ -92,13 +92,26 @@[m
+   ],[m
+   "favorites": [[m
+     {[m
+[31m-      "id": 2,[m
+[31m-      "name": "Veggie",[m
+[31m-      "description": "Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.",[m
+[31m-      "price": "21.90",[m
+[31m-      "category": 2,[m
+[31m-      "image_url": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png",[m
+[31m-      "thumbnail_url": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-gorestaurant-mobile/veggie.png"[m
+[32m+[m[32m      "id": 1,[m
+[32m+[m[32m      "name": "Ao molho",[m
+[32m+[m[32m      "description": "Macarrão ao molho branco, fughi e cheiro verde das montanhas.",[m
+[32m+[m[32m      "price": 19.9,[m
+[32m+[m[32m      "category": 1,[m
+[32m+[m[32m      "image_url": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food1.png",[m
+[32m+[m[32m      "thumbnail_url": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-gorestaurant-mobile/ao_molho.png",[m
+[32m+[m[32m      "extras": [[m
+[32m+[m[32m        {[m
+[32m+[m[32m          "id": 1,[m
+[32m+[m[32m          "name": "Bacon",[m
+[32m+[m[32m          "value": 1.5[m
+[32m+[m[32m        },[m
+[32m+[m[32m        {[m
+[32m+[m[32m          "id": 2,[m
+[32m+[m[32m          "name": "Frango",[m
+[32m+[m[32m          "value": 2[m
+[32m+[m[32m        }[m
+[32m+[m[32m      ],[m
+[32m+[m[32m      "formattedPrice": "R$19,90"[m
+     }[m
+   ][m
+[31m-}[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/pages/Dashboard/index.tsx b/src/pages/Dashboard/index.tsx[m
+[1mindex 9f51786..29fede2 100644[m
+[1m--- a/src/pages/Dashboard/index.tsx[m
+[1m+++ b/src/pages/Dashboard/index.tsx[m
+[36m@@ -32,6 +32,7 @@[m [minterface Food {[m
+   id: number;[m
+   name: string;[m
+   description: string;[m
+[32m+[m[32m  category: number;[m
+   price: number;[m
+   thumbnail_url: string;[m
+   formattedPrice: string;[m
+[36m@@ -54,12 +55,27 @@[m [mconst Dashboard: React.FC = () => {[m
+   const navigation = useNavigation();[m
+ [m
+   async function handleNavigate(id: number): Promise<void> {[m
+[31m-    // Navigate do ProductDetails page[m
+[32m+[m[32m    navigation.navigate('FoodDetails', { id });[m
+   }[m
+ [m
+   useEffect(() => {[m
+     async function loadFoods(): Promise<void> {[m
+[31m-      // Load Foods from API[m
+[32m+[m[32m      let apiUrl = `/foods?name_like=${searchValue}`;[m
+[32m+[m
+[32m+[m[32m      if (selectedCategory !== undefined) {[m
+[32m+[m[32m        apiUrl = `/foods?category_like=${selectedCategory}`;[m
+[32m+[m[32m      }[m
+[32m+[m
+[32m+[m[32m      api.get<Food[]>(apiUrl).then(response => {[m
+[32m+[m[32m        const foodsLoaded = response.data.map(food => {[m
+[32m+[m[32m          return {[m
+[32m+[m[32m            ...food,[m
+[32m+[m[32m            formattedPrice: formatValue(food.price).replace('R$', 'R$ '),[m
+[32m+[m[32m          };[m
+[32m+[m[32m        });[m
+[32m+[m
+[32m+[m[32m        setFoods(foodsLoaded);[m
+[32m+[m[32m      });[m
+     }[m
+ [m
+     loadFoods();[m
+[36m@@ -67,14 +83,19 @@[m [mconst Dashboard: React.FC = () => {[m
+ [m
+   useEffect(() => {[m
+     async function loadCategories(): Promise<void> {[m
+[31m-      // Load categories from API[m
+[32m+[m[32m      const categoriesLoaded = await api.get<Category[]>('/categories');[m
+[32m+[m[32m      setCategories(categoriesLoaded.data);[m
+     }[m
+ [m
+     loadCategories();[m
+   }, []);[m
+ [m
+   function handleSelectCategory(id: number): void {[m
+[31m-    // Select / deselect category[m
+[32m+[m[32m    if (selectedCategory === undefined || selectedCategory !== id) {[m
+[32m+[m[32m      setSelectedCategory(id);[m
+[32m+[m[32m    } else {[m
+[32m+[m[32m      setSelectedCategory(undefined);[m
+[32m+[m[32m    }[m
+   }[m
+ [m
+   return ([m
+[1mdiff --git a/src/pages/Favorites/index.tsx b/src/pages/Favorites/index.tsx[m
+[1mindex 27f91f0..0a9b953 100644[m
+[1m--- a/src/pages/Favorites/index.tsx[m
+[1m+++ b/src/pages/Favorites/index.tsx[m
+[36m@@ -32,7 +32,9 @@[m [mconst Favorites: React.FC = () => {[m
+ [m
+   useEffect(() => {[m
+     async function loadFavorites(): Promise<void> {[m
+[31m-      // Load favorite foods from api[m
+[32m+[m[32m      const favoritesLoaded = await api.get<Food[]>('/favorites');[m
+[32m+[m[32m      // console.log(favoritesLoaded.data);[m
+[32m+[m[32m      setFavorites(favoritesLoaded.data);[m
+     }[m
+ [m
+     loadFavorites();[m
+[1mdiff --git a/src/pages/FoodDetails/index.tsx b/src/pages/FoodDetails/index.tsx[m
+[1mindex f929173..2d45831 100644[m
+[1m--- a/src/pages/FoodDetails/index.tsx[m
+[1m+++ b/src/pages/FoodDetails/index.tsx[m
+[36m@@ -73,34 +73,98 @@[m [mconst FoodDetails: React.FC = () => {[m
+ [m
+   useEffect(() => {[m
+     async function loadFood(): Promise<void> {[m
+[31m-      // Load a specific food with extras based on routeParams id[m
+[32m+[m[32m      api.get<Food>(`foods/${routeParams.id}`).then(response => {[m
+[32m+[m[32m        response.data.formattedPrice = formatValue(response.data.price).replace([m
+[32m+[m[32m          'R$',[m
+[32m+[m[32m          'R$ ',[m
+[32m+[m[32m        );[m
+[32m+[m
+[32m+[m[32m        setFood(response.data);[m
+[32m+[m
+[32m+[m[32m        const extraQuantity = response.data.extras.map(extra => {[m
+[32m+[m[32m          return {[m
+[32m+[m[32m            ...extra,[m
+[32m+[m[32m            quantity: 0,[m
+[32m+[m[32m          };[m
+[32m+[m[32m        });[m
+[32m+[m[32m        setExtras(extraQuantity);[m
+[32m+[m[32m      });[m
+[32m+[m
+[32m+[m[32m      api.get<Food>(`favorites/${routeParams.id}`).then(response => {[m
+[32m+[m[32m        if (response.data) {[m
+[32m+[m[32m          setIsFavorite(true);[m
+[32m+[m[32m        }[m
+[32m+[m[32m      });[m
+     }[m
+ [m
+     loadFood();[m
+   }, [routeParams]);[m
+ [m
+   function handleIncrementExtra(id: number): void {[m
+[31m-    // Increment extra quantity[m
+[32m+[m[32m    const extraIncremented = extras.find(extra => extra.id === id);[m
+[32m+[m
+[32m+[m[32m    if (extraIncremented) {[m
+[32m+[m[32m      extraIncremented.quantity += 1;[m
+[32m+[m
+[32m+[m[32m      setExtras([m
+[32m+[m[32m        extras.map(extra =>[m
+[32m+[m[32m          extra.id === id ? { ...extraIncremented } : extra,[m
+[32m+[m[32m        ),[m
+[32m+[m[32m      );[m
+[32m+[m[32m    }[m
+   }[m
+ [m
+   function handleDecrementExtra(id: number): void {[m
+[31m-    // Decrement extra quantity[m
+[32m+[m[32m    const extraIncremented = extras.find(extra => extra.id === id);[m
+[32m+[m
+[32m+[m[32m    if (extraIncremented && extraIncremented.quantity > 0) {[m
+[32m+[m[32m      extraIncremented.quantity -= 1;[m
+[32m+[m
+[32m+[m[32m      setExtras([m
+[32m+[m[32m        extras.map(extra =>[m
+[32m+[m[32m          extra.id === id ? { ...extraIncremented } : extra,[m
+[32m+[m[32m        ),[m
+[32m+[m[32m      );[m
+[32m+[m[32m    }[m
+   }[m
+ [m
+   function handleIncrementFood(): void {[m
+[31m-    // Increment food quantity[m
+[32m+[m[32m    setFoodQuantity(foodQuantity + 1);[m
+   }[m
+ [m
+   function handleDecrementFood(): void {[m
+[31m-    // Decrement food quantity[m
+[32m+[m[32m    if (foodQuantity > 1) {[m
+[32m+[m[32m      setFoodQuantity(foodQuantity - 1);[m
+[32m+[m[32m    }[m
+   }[m
+ [m
+   const toggleFavorite = useCallback(() => {[m
+[31m-    // Toggle if food is favorite or not[m
+[32m+[m[32m    if (!isFavorite) {[m
+[32m+[m[32m      api.post('/favorites', food);[m
+[32m+[m[32m    } else {[m
+[32m+[m[32m      api.delete(`/favorites/${food.id}`);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    setIsFavorite(!isFavorite);[m
+   }, [isFavorite, food]);[m
+ [m
+   const cartTotal = useMemo(() => {[m
+[31m-    // Calculate cartTotal[m
+[32m+[m[32m    if (food.price) {[m
+[32m+[m[32m      const totalFood = food.price * foodQuantity;[m
+[32m+[m
+[32m+[m[32m      if (extras) {[m
+[32m+[m[32m        const totalExtras = extras.reduce((acumulador, extra) => {[m
+[32m+[m[32m          const mult = extra.value * extra.quantity;[m
+[32m+[m[32m          return acumulador + mult;[m
+[32m+[m[32m        }, 0);[m
+[32m+[m
+[32m+[m[32m        return formatValue(totalFood + totalExtras).replace('R$', 'R$ ');[m
+[32m+[m[32m      }[m
+[32m+[m
+[32m+[m[32m      return formatValue(totalFood).replace('R$', 'R$ ');[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    return 'R$ 0,00';[m
+   }, [extras, food, foodQuantity]);[m
+ [m
+   async function handleFinishOrder(): Promise<void> {[m
+[1mdiff --git a/src/pages/Orders/index.tsx b/src/pages/Orders/index.tsx[m
+[1mindex 61053f4..d60f1d5 100644[m
+[1m--- a/src/pages/Orders/index.tsx[m
+[1m+++ b/src/pages/Orders/index.tsx[m
+[36m@@ -32,9 +32,16 @@[m [mconst Orders: React.FC = () => {[m
+ [m
+   useEffect(() => {[m
+     async function loadOrders(): Promise<void> {[m
+[31m-      // Load orders from API[m
+[32m+[m[32m      api.get<Food[]>('/orders').then(response => {[m
+[32m+[m[32m        const ordersLoaded = response.data.map(food => {[m
+[32m+[m[32m          return {[m
+[32m+[m[32m            ...food,[m
+[32m+[m[32m            formattedPrice: formatValue(food.price).replace('R$', 'R$ '),[m
+[32m+[m[32m          };[m
+[32m+[m[32m        });[m
+[32m+[m[32m        setOrders(ordersLoaded);[m
+[32m+[m[32m      });[m
+     }[m
+[31m-[m
+     loadOrders();[m
+   }, []);[m
+ [m
